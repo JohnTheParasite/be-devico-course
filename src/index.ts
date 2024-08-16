@@ -1,15 +1,13 @@
 import express from "express";
-
-const app = express();
-app.use(express.json());
+import { setHeaders } from "./middlewares";
+import { usersRouter } from "./routes";
 
 const PORT = 5000;
 
-app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "Running Node with Express and Typescript",
-  });
-});
+const app = express();
+app.use(express.json());
+app.use(setHeaders);
+app.use("/users", usersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}.`);
