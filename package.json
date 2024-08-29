@@ -6,10 +6,12 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "create:tables": "ts-node --esm ./src/config/initializeTables.ts"
   },
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mysql2": "^3.11.0"
   },

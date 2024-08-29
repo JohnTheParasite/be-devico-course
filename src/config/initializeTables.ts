@@ -1,4 +1,5 @@
 import { createConnection } from "mysql2";
+import { initializeTables } from "../models/index";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -22,4 +23,6 @@ sqlConnection.connect((error) => {
   console.log("Connected to the database.");
 });
 
-export default sqlConnection;
+initializeTables(sqlConnection).finally(() => {
+  sqlConnection.end();
+});
